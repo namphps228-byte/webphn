@@ -1,0 +1,42 @@
+/* One background spans the hero. The inner wrap only constrains the text. */
+.hero {
+  isolation: isolate;
+  background: var(--paper);
+}
+.hero::before { content: none; }
+.hero-field {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 75% 35%, #e2eeed, #faf9f3 75%);
+}
+.hero-field canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: .48;
+  filter: invert(1) hue-rotate(180deg);
+}
+[data-theme=dark] .hero-field {
+  background: radial-gradient(ellipse at 75% 35%, #15384c, #0b202f 75%);
+}
+[data-theme=dark] .hero-field canvas {
+  opacity: .66;
+  filter: none;
+}
+[data-motion=off] .hero-field canvas, .hero-field canvas[hidden] {
+  visibility: hidden;
+}
+.hero .hero-subline, .hero .hero-aside, [data-theme=dark] .hero .hero-aside {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.hero .hero-aside { padding-inline: 0; }
+.hero-aside .button-navy { background: #dfbc59; color: #102c40; }
+.hero .hero-subline { padding-inline: 0; }
+[data-theme=dark] .hero .gold-mark { color: #f3cd70; }
+[data-theme=dark] .hero .gold-mark::before { inset-block: 94% 0; }
+[data-theme=dark] .hero-aside > .hero-small { color: #dae8ef; }
